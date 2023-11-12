@@ -11,7 +11,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/hotel")
+@RequestMapping("/api/v1/hotel")
 @CrossOrigin(origins = {"http://127.0.0.1:5500"})
 public class HotelDetailsController {
 

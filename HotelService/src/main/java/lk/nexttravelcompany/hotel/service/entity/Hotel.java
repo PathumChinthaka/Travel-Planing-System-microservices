@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.List;
+
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -14,19 +16,22 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(value = "Hotel_details")
 public class Hotel {
     @Id
-    private int hotelId;
+    private String hotelId;
     private String hotelName;
     private HotelCategory hotelCategory;
     private String email;
     private String telephone;
     private String mobile;
     private String fax;
-    private String address;
+    private String address_1;
+    private String address_2;
     private String city;
-    private String mapLocation;
+    private double longitude;
+    private double latitude;
     private String description;
     private String websiteLink;
     private String facebook;
     private String instagram;
     private String status;
+    private List<RoomDetails> roomDetailsList;
 }

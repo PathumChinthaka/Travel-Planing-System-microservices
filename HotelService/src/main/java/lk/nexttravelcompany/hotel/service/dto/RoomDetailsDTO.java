@@ -1,21 +1,16 @@
-package lk.nexttravelcompany.hotel.service.entity;
+package lk.nexttravelcompany.hotel.service.dto;
 
-import lk.nexttravelcompany.hotel.service.dto.HotelMealPlaneDTO;
-import lk.nexttravelcompany.hotel.service.dto.HotelRoomTypeDTO;
+import lk.nexttravelcompany.hotel.service.entity.CancellationPolicy;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Document(value = "Room_details")
-public class RoomDetails {
-    @Id
+public class RoomDetailsDTO {
     private String roomId;
     private String roomName;
     private List<HotelMealPlaneDTO> hotelMealPlaneDTOList;
