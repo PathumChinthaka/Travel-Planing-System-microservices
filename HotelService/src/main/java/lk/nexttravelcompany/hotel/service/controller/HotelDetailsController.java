@@ -1,10 +1,12 @@
 package lk.nexttravelcompany.hotel.service.controller;
 
+import lk.nexttravelcompany.hotel.service.dto.HotelCategoryDTO;
 import lk.nexttravelcompany.hotel.service.dto.HotelDTO;
+import lk.nexttravelcompany.hotel.service.dto.HotelMealPlaneDTO;
+import lk.nexttravelcompany.hotel.service.dto.RoomTypeDTO;
 import lk.nexttravelcompany.hotel.service.service.HotelService;
 import lk.nexttravelcompany.hotel.service.util.ResponseUtil;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -17,39 +19,73 @@ public class HotelDetailsController {
 
     private final HotelService hotelService;
 
-    //handle hotel details post request
     @PostMapping("/save")
-    @ResponseStatus(value = HttpStatus.CREATED)
     public Mono<ResponseUtil> saveHotelDetails(@RequestBody HotelDTO hotelDTO) {
-        return hotelService.saveHotelDetails(hotelDTO).map(hotelDTO1 ->
-                new ResponseUtil(200, "Hotel details Saved", null));
+        return hotelService.saveHotelDetails(hotelDTO).map(savedHotel ->
+                new ResponseUtil(200, "Hotel saved Success...", savedHotel));
     }
 
-    //handle hotel details get request
+    @PostMapping("/category/save")
+    public Mono<ResponseUtil> saveHotelCategory(@RequestBody HotelCategoryDTO hotelCategoryDTO) {
+        return hotelService.saveHotelCategory(hotelCategoryDTO).map(savedHotelCategory ->
+                new ResponseUtil(200, "Hotel Category saved Success...", savedHotelCategory));
+    }
+
+    @PostMapping("/meal-plane/save")
+    public Mono<ResponseUtil> saveMealPlane(@RequestBody HotelMealPlaneDTO mealPlaneDTO) {
+        return hotelService.saveMealPlane(mealPlaneDTO).map(savedMealPlane ->
+                new ResponseUtil(200, "Meal Plane saved Success...", savedMealPlane));
+    }
+
+    @PostMapping("/room-type/save")
+    public Mono<ResponseUtil> saveRoomType(@RequestBody RoomTypeDTO roomTypeDTO) {
+        return hotelService.saveRoomType(roomTypeDTO).map(savedRoomType ->
+                new ResponseUtil(200, "Room Type saved Success...", savedRoomType));
+    }
+
     @GetMapping("{hotelId}")
-    public Mono<ResponseUtil> getHotelDetails(@PathVariable int hotelId) {
-        return hotelService.getHotelDetails(hotelId).map(hotelDTO ->
-                new ResponseUtil(200, "Hotel details returned", hotelDTO));
+    public Mono<ResponseUtil> getHotelDetailById(@PathVariable String hotelId) {
+        return hotelService.getHotelDetailById(hotelId).map(hotel ->
+                new ResponseUtil(200, "Hotel found Success...", hotel));
     }
 
-    //handle get All hotel details get request
+    @GetMapping("/category/{hotelCategoryId}")
+    public Mono<ResponseUtil> getHotelCategoryById(@PathVariable String hotelCategoryId) {
+        return hotelService.getHotelCategoryById(hotelCategoryId).map(hotelCategory ->
+                new ResponseUtil(200, "Hotel Category found Success...", hotelCategory));
+    }
+
     @GetMapping("/getAll")
     public Flux<ResponseUtil> getAllHotelDetails() {
-        return hotelService.getAllHotelDetails().map(allHotelDetails ->
-                new ResponseUtil(200, "return All Hotel Details", allHotelDetails));
+        return hotelService.getAllHotelDetails().map(allHotels ->
+                new ResponseUtil(200, "All Hotels Fetched...", allHotels));
     }
 
-    //handle hotel details update request
-    @PutMapping("/update")
-    public Mono<ResponseUtil> updateHotelDetails(@RequestBody HotelDTO hotelDTO) {
-       return hotelService.updateHotelDetails(hotelDTO).map(updatedHotel ->
-                new ResponseUtil(200, "Hotel Details updated Success",null));
+    @GetMapping("/category/getAll")
+    public Flux<ResponseUtil> getAllHotelCategory() {
+        return hotelService.getAllHotelCategory().map(allHotelCategory ->
+                new ResponseUtil(200, "All Hotels Category Fetched...", allHotelCategory));
     }
 
-    //handle hotel details delete request
+    @PutMapping("{hotelId}")
+    public Mono<ResponseUtil> updateHotelDetails(@RequestBody HotelDTO hotelDTO, @PathVariable String hotelId) {
+        return hotelService.updateHotelDetails(hotelDTO, hotelId).map(hotel ->
+                new ResponseUtil(200, "Hotel found Success...", hotel));
+    }
+
+    @PutMapping("/category/{hotelCategoryId}")
+    public Mono<ResponseUtil> updateHotelCategory(@RequestBody HotelCategoryDTO hotelCategoryDTO,@PathVariable String hotelCategoryId) {
+        return hotelService.updateHotelCategory(hotelCategoryDTO, hotelCategoryId).map(hotelCategory ->
+                new ResponseUtil(200, "Hotel Category found Success...", hotelCategory));
+    }
+
     @DeleteMapping("{hotelId}")
-    public Mono<ResponseUtil> deleteHotel(@PathVariable int hotelId) {
-        return hotelService.deleteHotel(hotelId).map(deletedHotel ->
-                new ResponseUtil(200, "Hotel details Deleted", null));
+    public Mono<Void> deleteHotel(@PathVariable String hotelId) {
+        return hotelService.deleteHotel(hotelId);
+    }
+
+    @DeleteMapping("/category/{hotelCategoryId}")
+    public Mono<Void> deleteHotelCategory(@PathVariable String hotelCategoryId) {
+        return hotelService.deleteHotelCategory(hotelCategoryId);
     }
 }

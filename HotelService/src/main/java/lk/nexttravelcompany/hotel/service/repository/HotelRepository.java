@@ -6,6 +6,6 @@ import org.springframework.stereotype.Repository;
 import reactor.core.publisher.Mono;
 
 @Repository
-public interface HotelRepository extends ReactiveMongoRepository<Hotel,Integer> {
+public interface HotelRepository extends ReactiveMongoRepository<Hotel,String> {
     Mono<Hotel>findByHotelName(String hotelName);
 }
