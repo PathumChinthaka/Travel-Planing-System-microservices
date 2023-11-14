@@ -37,8 +37,6 @@ public class HotelServiceImpl implements HotelService {
 
         Hotel hotelEntity = modelMapper.map(hotelDTO, Hotel.class);
 
-        hotelEntity.getHotelCategory().setHotelCategoryId(UUID.randomUUID().toString());
-
         hotelDTO.getRoomDetailsDTOList().forEach(roomDTO -> System.out.println(roomDTO.toString()));
 
         hotelEntity.setRoomDetailsList(
@@ -103,10 +101,10 @@ public class HotelServiceImpl implements HotelService {
         Hotel saveHotel = modelMapper.map(hotelDTO, Hotel.class);
         Mono<Hotel> updateHotel = hotelRepository.findById(saveHotel.getHotelId());
 
-        if(updateHotel != null){
-            return hotelRepository.save(saveHotel).map(hotel -> modelMapper.map(hotel,  HotelDTO.class));
+        if (updateHotel != null) {
+            return hotelRepository.save(saveHotel).map(hotel -> modelMapper.map(hotel, HotelDTO.class));
         }
-        return  updateHotel.map(hotel -> modelMapper.map(hotel,  HotelDTO.class));
+        return updateHotel.map(hotel -> modelMapper.map(hotel, HotelDTO.class));
     }
 
     //delete hotel details from database
@@ -143,10 +141,10 @@ public class HotelServiceImpl implements HotelService {
         HotelCategory saveHotelCategory = modelMapper.map(hotelCategoryDTO, HotelCategory.class);
         Mono<HotelCategory> updateHotelCategory = hotelCategoryRepository.findById(saveHotelCategory.getHotelCategoryId());
 
-        if(updateHotelCategory != null){
-            return hotelCategoryRepository.save(saveHotelCategory).map(hotelCategory -> modelMapper.map(hotelCategory,  HotelCategoryDTO.class));
+        if (updateHotelCategory != null) {
+            return hotelCategoryRepository.save(saveHotelCategory).map(hotelCategory -> modelMapper.map(hotelCategory, HotelCategoryDTO.class));
         }
-        return  updateHotelCategory.map(hotelCategory -> modelMapper.map(hotelCategory,  HotelCategoryDTO.class));
+        return updateHotelCategory.map(hotelCategory -> modelMapper.map(hotelCategory, HotelCategoryDTO.class));
     }
 
     @Override

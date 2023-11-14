@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @Data
 public class HotelCategoryDTO {
     private String hotelCategoryId;
-    private String hotelCategory;
+    private String hotelCategoryName;
 }
