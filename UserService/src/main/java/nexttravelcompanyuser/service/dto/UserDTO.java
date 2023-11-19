@@ -40,4 +40,6 @@ public class UserDTO {
     @NotNull(message = "user Address should not be Null")
     @NotEmpty(message = "User Address is required")
     private String remarks;
+    private String userImage;
+    private String userNicImage;
 }

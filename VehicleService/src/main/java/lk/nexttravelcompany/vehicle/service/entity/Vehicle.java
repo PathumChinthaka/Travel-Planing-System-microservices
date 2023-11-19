@@ -25,4 +25,6 @@ public class Vehicle {
     private double vehicle1kmCharge;
     private String remarks;
     private String policyType;
+    private String vehicleImage;
+    private String vehicleLicenImage;
 }

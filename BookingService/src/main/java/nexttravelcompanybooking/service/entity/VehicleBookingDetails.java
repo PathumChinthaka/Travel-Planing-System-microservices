@@ -15,13 +15,13 @@ import lombok.NoArgsConstructor;
 @Entity
 public class VehicleBookingDetails {
     @Id
-    private int vehicle_booking_id;
+    private int vehicleBookingId;
     @OneToOne
-    private Booking booking_id;
-    private int vehicle_id;
+    private Booking bookingId;
+    private int vehicleId;
     private double price;
     private double discount;
-    private int can_policy_id;
-    private double can_fee;
+    private int canPolicyId;
+    private double canFee;
     private String status;
 }

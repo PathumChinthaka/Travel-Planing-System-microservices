@@ -1,9 +1,6 @@
 package nexttravelcompanybooking.service.service;
 
-import nexttravelcompanybooking.service.dto.BookingDTO;
-import nexttravelcompanybooking.service.dto.BookingStatusDTO;
-import nexttravelcompanybooking.service.dto.GuideBookingDetailsDTO;
-import nexttravelcompanybooking.service.dto.HotelBookingDetailsDTO;
+import nexttravelcompanybooking.service.dto.*;
 import nexttravelcompanybooking.service.entity.Booking;
 import nexttravelcompanybooking.service.entity.BookingStatus;
 import nexttravelcompanybooking.service.entity.GuideBookingDetails;
@@ -14,9 +11,9 @@ import java.util.List;
 public interface BookingDetailsService {
     //Booking details
     void saveBookingDetails(BookingDTO bookingDTO);
-    BookingDTO getBookingData(int booking_id);
+    BookingDTO getBookingData(int bookingId);
     List<Booking> getAllBookingDetails();
-    void deleteBookingData(int booking_Id);
+    void deleteBookingData(int bookingId);
     //booking status
     void saveBookingStatus(BookingStatusDTO bookingStatusDTO);
     List<BookingStatus> getAllBookingStatus();
@@ -27,6 +24,9 @@ public interface BookingDetailsService {
     //Hotel booking Details
     void saveHotelBooking(HotelBookingDetailsDTO hotelBookingDetailsDTO);
     void updateHotelBooking(HotelBookingDetailsDTO hotelBookingDetailsDTO);
-    void deleteHotelBooking(int booking_Id);
+    void deleteHotelBooking(int bookingId);
     List<HotelBookingDetails>getAllHotelBookings();
+    //vehicle booking
+//    void saveVehicleBookingDetails(VehicleBookingDetailsDTO vehicleBookingDTO);
+//    VehicleBookingDetailsDTO getVehicleBookingData();
 }

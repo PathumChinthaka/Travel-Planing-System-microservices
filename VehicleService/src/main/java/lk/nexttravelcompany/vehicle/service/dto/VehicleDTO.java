@@ -45,4 +45,7 @@ public class VehicleDTO {
     @NotEmpty(message = "Package Name is Required !")
     private String remarks;
     private String policyType;
+    private String vehicleImage;
+    private String vehicleLicenImage;
+
 }

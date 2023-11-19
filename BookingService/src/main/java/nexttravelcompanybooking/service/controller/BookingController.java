@@ -18,7 +18,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/booking")
+@RequestMapping("/api/v1/booking")
 public class BookingController {
 
     private final BookingDetailsService bookingService;
@@ -99,7 +99,7 @@ public class BookingController {
     @PutMapping("/hotelbooking/update")
     public ResponseUtility updateHotelBookings(@RequestBody HotelBookingDetailsDTO hotelBookingDTO) {
         bookingService.updateHotelBooking(hotelBookingDTO);
-        int bookingId = hotelBookingDTO.getBooking_id();
+        int bookingId = hotelBookingDTO.getHotelBookingId();
         return new ResponseUtility(200, bookingId + " Updated Successfully", null);
     }
 

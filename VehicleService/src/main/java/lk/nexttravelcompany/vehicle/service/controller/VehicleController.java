@@ -10,8 +10,8 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api/vehicle")
-@CrossOrigin(origins = {"http://127.0.0.1:5500"})
+@RequestMapping("/api/v1/vehicle")
+@CrossOrigin(origins = {"http://127.0.0.1:5500/custompackage.html","http://127.0.0.1:5500"})
 public class VehicleController {
 
     private final VehicleService vehicleService;

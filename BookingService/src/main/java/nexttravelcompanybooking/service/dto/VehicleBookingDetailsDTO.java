@@ -11,19 +11,19 @@ import lombok.NoArgsConstructor;
 @Data
 public class VehicleBookingDetailsDTO {
     @NotEmpty(message = "vehicle_booking_id is required")
-    private int vehicle_booking_id;
+    private int vehicleBookingId;
     @NotEmpty(message = "booking_id is required")
-    private int booking_id;
+    private BookingDTO bookingId;
     @NotEmpty(message = "vehicle_id is required")
-    private int vehicle_id;
+    private int vehicleId;
     @NotEmpty(message = "vehicle price is required")
     private double price;
     @NotNull(message = "vehicle discount should not be Null")
     private double discount;
     @NotEmpty(message = "vehicle cancellation policy is required")
-    private int can_policy_id;
+    private int canPolicyId;
     @NotEmpty(message = "vehicle cancellation Fee is required")
-    private double can_fee;
+    private double canFee;
     @NotNull(message = "vehicle status should not be Null")
     private String status;
 }

@@ -21,4 +21,6 @@ public class User {
     private String gender;
     private String address;
     private String remarks;
+    private String userImage;
+    private String userNicImage;
 }

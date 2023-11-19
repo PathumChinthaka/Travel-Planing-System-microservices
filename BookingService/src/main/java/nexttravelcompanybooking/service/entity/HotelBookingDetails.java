@@ -16,13 +16,13 @@ import lombok.NoArgsConstructor;
 @Entity
 public class HotelBookingDetails {
     @Id
-    private int hotel_Booking_Id;
+    private int hotelBookingId;
     @OneToOne
-    private Booking booking;
-    private int hotel_id;
-    private double cal_price;
-    private double discount_price;
-    private double hotel_price;
+    private Booking bookingId;
+    private int hotelId;
+    private double calPrice;
+    private double discountPrice;
+    private double hotelPrice;
     private String status;
     @ManyToOne
     private RoomBookingDetails roomBookingDetails;

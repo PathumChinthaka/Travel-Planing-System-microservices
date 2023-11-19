@@ -1,5 +1,6 @@
 package nexttravelcompanybooking.service.dto;
 
+import jakarta.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -11,12 +12,12 @@ import java.util.List;
 @NoArgsConstructor
 @Data
 public class RoomBookingDetailsDTO {
-    private int room_booking_id;
+    private int roomBookingId;
     private List<HotelBookingDetails>hotelBookingId;
-    private int room_id;
+    private int roomId;
     private double price;
     private double discount;
-    private int can_policy_id;
-    private double can_fee;
+    private int canPolicyId;
+    private double canFee;
     private String status;
 }

@@ -9,10 +9,7 @@ import nexttravelcompanybooking.service.entity.Booking;
 import nexttravelcompanybooking.service.entity.BookingStatus;
 import nexttravelcompanybooking.service.entity.GuideBookingDetails;
 import nexttravelcompanybooking.service.entity.HotelBookingDetails;
-import nexttravelcompanybooking.service.repository.BookingDetailsRepository;
-import nexttravelcompanybooking.service.repository.BookingStatusRepository;
-import nexttravelcompanybooking.service.repository.GuideBookingRepository;
-import nexttravelcompanybooking.service.repository.HotelBookingRepository;
+import nexttravelcompanybooking.service.repository.*;
 import nexttravelcompanybooking.service.service.BookingDetailsService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -35,6 +32,8 @@ public class BookingDetailsImpl implements BookingDetailsService {
     private final GuideBookingRepository guideBookingRepository;
 
     private final HotelBookingRepository hotelBookingRepository;
+
+    private final VehicleBookingRepository vehicleBookingRepository;
 
     //save booking in database
     @Override
@@ -76,10 +75,10 @@ public class BookingDetailsImpl implements BookingDetailsService {
     //save Guide booking data in database
     @Override
     public void saveGuideBooking(GuideBookingDetailsDTO guideBookingDTO) {
-        if (!guideBookingRepository.existsById(guideBookingDTO.getBooking_id())) {
+        if (!guideBookingRepository.existsById(guideBookingDTO.getGuidBookingId())) {
             guideBookingRepository.save(modelMapper.map(guideBookingDTO, GuideBookingDetails.class));
         } else {
-            throw new RuntimeException(guideBookingDTO.getBooking_id() + " Guide Already Exist");
+            throw new RuntimeException(guideBookingDTO.getGuidBookingId() + " Guide Already Exist");
         }
     }
 
@@ -104,10 +103,10 @@ public class BookingDetailsImpl implements BookingDetailsService {
     //update Hotel booking data in database
     @Override
     public void updateHotelBooking(HotelBookingDetailsDTO hotelBookingDetailsDTO) {
-        if (!hotelBookingRepository.existsById(hotelBookingDetailsDTO.getBooking_id())){
+        if (!hotelBookingRepository.existsById(hotelBookingDetailsDTO.getHotelBookingId())){
             hotelBookingRepository.save(modelMapper.map(hotelBookingDetailsDTO, HotelBookingDetails.class));
         }else {
-            throw new RuntimeException(hotelBookingDetailsDTO.getBooking_id()+" HotelBookingID Not Exist");
+            throw new RuntimeException(hotelBookingDetailsDTO.getBookingId()+" HotelBookingID Not Exist");
         }
 
     }
@@ -123,4 +122,8 @@ public class BookingDetailsImpl implements BookingDetailsService {
     public List<HotelBookingDetails> getAllHotelBookings() {
         return hotelBookingRepository.findAll();
     }
+
+
+
+
 }

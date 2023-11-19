@@ -17,13 +17,13 @@ import java.util.List;
 @Entity
 public class RoomBookingDetails {
     @Id
-    private int room_booking_id;
+    private int roomBookingId;
     @OneToMany(mappedBy = "roomBookingDetails")
     private List<HotelBookingDetails>hotelBookingId;
-    private int room_id;
+    private int roomId;
     private double price;
     private double discount;
-    private int can_policy_id;
-    private double can_fee;
+    private int canPolicyId;
+    private double canFee;
     private String status;
 }

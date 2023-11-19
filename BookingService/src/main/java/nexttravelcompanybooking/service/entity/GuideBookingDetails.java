@@ -15,13 +15,13 @@ import lombok.NoArgsConstructor;
 @Entity
 public class GuideBookingDetails {
     @Id
-    private int guid_booking_id;
+    private int guidBookingId;
     @OneToOne
-    private Booking booking_id;
-    private int guid_id;
+    private Booking bookingId;
+    private int guidId;
     private double price;
     private double discount;
-    private int can_policy_id;
-    private double can_fee;
+    private int canPolicyId;
+    private double canFee;
     private String status;
 }
